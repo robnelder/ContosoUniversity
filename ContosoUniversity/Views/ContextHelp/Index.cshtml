@@ -1,0 +1,57 @@
+﻿@model ContosoUniversity.ViewModels.ContextHelpWithHelp
+
+@{
+    ViewBag.Title = "ContextHelp";
+}
+
+<h2>Context Help @Html.DisplayHelp(Model.ContextHelps) </h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.Controller, Model.ContextHelps)
+        </th>
+        <th>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.Action, Model.ContextHelps)
+        </th>
+        <th>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.Property, Model.ContextHelps)
+        </th>
+        <th>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.Tooltip, Model.ContextHelps)
+        </th>
+        <th>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.HelpText, Model.ContextHelps)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.ContextHelpList) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Controller)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Action)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Property)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tooltip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HelpText)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ContextHelpID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ContextHelpID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ContextHelpID })
+        </td>
+    </tr>
+}
+
+</table>

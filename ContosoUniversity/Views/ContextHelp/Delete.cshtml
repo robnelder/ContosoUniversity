@@ -1,0 +1,66 @@
+﻿@model ContosoUniversity.ViewModels.ContextHelpWithHelp
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete @Html.DisplayHelp(Model.ContextHelps) </h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ContextHelp</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.Controller, Model.ContextHelps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContextHelp.Controller)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.Action, Model.ContextHelps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContextHelp.Action)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.Property, Model.ContextHelps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContextHelp.Property)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.Tooltip, Model.ContextHelps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContextHelp.Tooltip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.HelpText, Model.ContextHelps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContextHelp.HelpText)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to " + Model.ContextHelp.Controller + " List", "Index", Model.ContextHelp.Controller)
+            |
+            @Html.ActionLink("Go to Context Help List", "Index")
+        </div>
+    }
+</div>

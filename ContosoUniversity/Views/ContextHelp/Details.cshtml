@@ -1,0 +1,58 @@
+﻿@model ContosoUniversity.ViewModels.ContextHelpWithHelp
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details @Html.DisplayHelp(Model.ContextHelps) </h2>
+
+<div>
+    <h4>ContextHelp</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.Controller, Model.ContextHelps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContextHelp.Controller)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.Action, Model.ContextHelps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContextHelp.Action)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.Property, Model.ContextHelps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContextHelp.Property)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.Tooltip, Model.ContextHelps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContextHelp.Tooltip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameWithHelpFor(model => model.ContextHelp.HelpText, Model.ContextHelps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContextHelp.HelpText)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ContextHelp.ContextHelpID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
