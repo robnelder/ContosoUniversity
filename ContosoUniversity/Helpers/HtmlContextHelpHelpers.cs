@@ -9,7 +9,7 @@ namespace ContosoUniversity.Helpers
 {
     public static class HtmlContextHelpHelpers
     {
-        private const string EDITORROLE = "ContextHelpEditor";
+        private const string EDITORROLE = "ContextHelpEditor"; 
 
         #region " Display Help "
         /// <summary>
