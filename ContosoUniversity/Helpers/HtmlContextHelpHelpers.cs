@@ -182,33 +182,32 @@ namespace ContosoUniversity.Helpers
         /// <returns>HTML markup in an MvcHtmlString</returns>
         private static MvcHtmlString DisplayNameWithHelp(string name, string title, string content, string tooltip, string editorHTML)
         {
-            // TODO: figure out how to position the popover so that top is no higher than the link
-            // TODO: Make tooltips look better
             // TODO: figure out how to reposition the popover when screen size changes   
                                              
             // Build ContextHelp span which will display the question mark with a popover
             var contextHelp = new TagBuilder("span");
             contextHelp.AddCssClass("glyphicon");
             contextHelp.AddCssClass("glyphicon-question-sign");
+            contextHelp.AddCssClass("contexthelp");
             if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(content))
             {
                 if (!string.IsNullOrWhiteSpace(editorHTML))
                 {
-                    contextHelp.Attributes.Add("style", "color: lightgray; font-size:14px");
+                    contextHelp.AddCssClass("contexthelp-disabled");
                 }
                 else
                 {
-                    contextHelp.Attributes.Add("style", "color: transparent; font-size:14px");
+                    contextHelp.AddCssClass("contexthelp-hidden");
                 }
             }
             else
             {
+                contextHelp.AddCssClass("contexthelp-enabled");
                 contextHelp.Attributes.Add("tabindex", "0");
                 contextHelp.Attributes.Add("role", "button");
-                contextHelp.Attributes.Add("style", "color: dodgerblue; font-size:14px");
                 contextHelp.Attributes.Add("data-toggle", "popover");
                 contextHelp.Attributes.Add("data-html", "true");
-                contextHelp.Attributes.Add("data-title", "<strong>" + title + "</strong>");
+                contextHelp.Attributes.Add("data-title", title);
                 contextHelp.Attributes.Add("data-content", content);
                 contextHelp.Attributes.Add("data-trigger", "focus");
                 contextHelp.Attributes.Add("data-placement", "right");
@@ -217,7 +216,6 @@ namespace ContosoUniversity.Helpers
             // Build the outer span which will contain the name (if specified), the ContextHelp, and the editorHTML (if relevant)
             var noWrapContainer = new TagBuilder("span");
             noWrapContainer.Attributes.Add("style", "white-space: nowrap;");
-            System.Text.StringBuilder ret = new System.Text.StringBuilder("<span style='white-space: nowrap;'>");
             if (!string.IsNullOrWhiteSpace(name))
             {
                 if (!string.IsNullOrWhiteSpace(tooltip))
@@ -284,8 +282,9 @@ namespace ContosoUniversity.Helpers
                 var contextHelpEditor = new TagBuilder("a");
                 contextHelpEditor.AddCssClass("glyphicon");
                 contextHelpEditor.AddCssClass("glyphicon-edit");
+                contextHelpEditor.AddCssClass("contexthelp");
+                contextHelpEditor.AddCssClass("contexthelp-editor");
                 contextHelpEditor.MergeAttribute("href", editHelpLink);
-                contextHelpEditor.MergeAttribute("style", "color: gray; font-size:14px; text-decoration: none");
                 contextHelpEditor.MergeAttribute("tabindex", "0");
                 return MvcHtmlString.Create(DisplayNameWithHelp(name, title, content, tooltip, contextHelpEditor.ToString()).ToString());
             }
