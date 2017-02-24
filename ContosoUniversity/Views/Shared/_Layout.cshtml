@@ -42,13 +42,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/ContextHelp")
     @RenderSection("scripts", required: false)
-
-    <script language="javascript" type="text/javascript">
-        $(document).ready(function () {
-            $('[data-toggle="popover"]').popover();
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
 </body>
 </html>
