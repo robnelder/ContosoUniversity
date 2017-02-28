@@ -8,7 +8,6 @@ $(document).ready(function () {
 /* Repositions open popover when window is resized */
 $(window).resize(function () {
     $('[data-toggle="popover"]').each(function (i, obj) {
-        var isVisible = $(obj).data('bs.popover').tip().hasClass('in')
         if ($(obj).data('bs.popover').tip().hasClass('in')) {
             $(obj).popover('show');
             return false; // break out of the loop
